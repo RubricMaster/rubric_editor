@@ -10,11 +10,17 @@
     <div id="app"></div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-    var socket = io.connect('http://localhost');
-	socket.on('news', function (data) {
-		console.log(data);
-		socket.emit('my other event', { my: 'data' });
-	});
+      var socket = io.connect("http://localhost");
+
+      socket.on("connection", function(data) {
+        console.log("connected");
+        console.log(data);
+        socket.emit("my other event", { my: "data" });
+      });
+      socket.on("messages", function(data) {
+        console.log(data);
+        socket.emit("my other event", { my: "data" });
+      });
     </script>
     <!-- built files will be auto injected -->
   </body>
